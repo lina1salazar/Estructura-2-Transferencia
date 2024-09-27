@@ -1,32 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
 package com.mycompany.transferencia;
 
-/**
- *
- * @author Andres
- */
 import java.util.*;
 
-// Clase que representa un grafo usando lista de adyacencia con letras
+/**
+ * La clase grafo representa un grafo usando una lista de adyacencia con letras
+ * Cada vertice estara representado por caracteres, asi mismo 
+ * proporciona metodos para agregar los aristas y permite
+ * realizar el recorrido en anchura desde el vertice principal.
+*/
+
 public class Grafo {
     private Map<Character, List<Character>> adjList; // Lista de adyacencia
 
-    // Constructor
+    // Constructor de la clase Grafo, inicializa la lista de adyacencia.
     public Grafo() {
         adjList = new HashMap<>();
     }
 
-    // Método para agregar una arista al grafo
+    /**
+     * Método para agregar una conexión al grafo
+     * @param v El vértice de origen de la conexión
+     * @param w El vértice de destino de la conexión 
+    */ 
+
     void agregarArista(char v, char w) {
         adjList.putIfAbsent(v, new LinkedList<>());
         adjList.putIfAbsent(w, new LinkedList<>());
         adjList.get(v).add(w); // Agrega w a la lista de v
     }
 
-    // Método para realizar el recorrido en anchura (BFS) desde un vértice fuente
+    /** 
+     * Método para realizar el recorrido en anchura (BFS) desde un vértice fuente
+     * Muetsra los vértices en el orden en que son visitados
+     * @param inicio del vertice desde donde se comiensa el recorrido
+    */
     void BFS(char inicio) {
         // Marca todos los vértices como no visitados
         Set<Character> visitado = new HashSet<>();
